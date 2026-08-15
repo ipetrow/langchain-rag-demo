@@ -23,11 +23,11 @@ def csv_to_documents(path: Path) -> list[Document]:
 
         documents.append(
             Document(
+                id=row[ID],
                 page_content=content,
                 metadata={
                     "source": str(path),
-                    "row": index,
-                    "id": row[ID]
+                    "row": index
                 }
             )
         )
