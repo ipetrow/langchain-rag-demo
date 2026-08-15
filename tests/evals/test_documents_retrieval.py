@@ -8,6 +8,7 @@ from src.app.vectorstore import create_vector_store
 
 from tests.data.documents import test_document
 
+EXPECTED_RETRIEVED_DOCUMENTS_NUMBER = 2
 USER_QUERY = "Did I start The Great Hunt right after the first Wheel of Time book?"
 
 @pytest.fixture
@@ -31,4 +32,5 @@ def test_documents(documents_retriever):
         query=USER_QUERY
     )
 
+    assert len(retrieved_documents) == EXPECTED_RETRIEVED_DOCUMENTS_NUMBER
     assert test_document in retrieved_documents
