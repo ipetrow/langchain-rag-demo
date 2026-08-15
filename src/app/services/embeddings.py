@@ -1,8 +1,10 @@
 from langchain_openai import OpenAIEmbeddings
 
-def create_embeddings() -> OpenAIEmbeddings:
+from .config import Settings
+
+def create_embeddings(settings: Settings) -> OpenAIEmbeddings:
     return OpenAIEmbeddings(
-        model="", # TODO add Azure embedding model name
-        base_url="", # TODO add Azure endpont
-        api_key="" # TODO add Azure api key
+        model=settings.azure_openai_embedding_model_name,
+        base_url=settings.azure_openai_endpoint,
+        api_key=settings.azure_openai_api_key
     )

@@ -3,7 +3,7 @@ import pytest
 from src.app.document_loader import csv_to_documents
 from src.app.services.config import load_settings
 
-EXPECTED_DOCUMENTS_COUNT = 3
+EXPECTED_DOCUMENTS_COUNT = 4
 EXPECTED_ID = "0"
 EXPECTED_ROW = 0
 
