@@ -1,29 +1,39 @@
 from dotenv import load_dotenv
 
-from src.app.rag import create_retriever, retrieve_documents
-from src.app.services.config import load_settings
+from src.app.services.config import load_settings, Settings
 from src.app.services.embeddings import create_embeddings
 from src.app.services.llm import create_llm
-from src.app.vectorstore import create_vector_store
+from src.app.vectorstore import (
+    create_vector_store,
+    create_retriever
+)
 
 from .document_loader import csv_to_documents
+from .chat_session import ChatSession
+from .rag import RAG
 
-def main():
-
-    load_dotenv()
-    settings = load_settings()
+def setup_rag(settings: Settings) -> RAG:
 
     documents = csv_to_documents(settings.data_path)
     
     embeddings = create_embeddings(settings)
     vector_store = create_vector_store(embeddings)
-    retriever = create_retriever(vector_store)
     
     vector_store.add_documents(documents=documents)
 
-    retrieved_documents = retrieve_documents(retriever=retriever, query="Did I start The Great Hunt right after the first Wheel of Time book?")
-
+    retriever = create_retriever(vector_store)
     llm = create_llm(settings=settings)
 
+    return RAG(
+        retriever=retriever,
+        llm=llm
+    )
+
 if __name__ == "__main__":
-    main()
+
+    load_dotenv()
+    settings = load_settings()
+
+    rag = setup_rag(settings)
+
+    ChatSession(rag).run()
