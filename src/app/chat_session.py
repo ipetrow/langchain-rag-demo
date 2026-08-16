@@ -1,22 +1,24 @@
+from .rag import RAG
+
 class ChatSession:
 
-    def __init__(self, llm):
-        self._llm = llm
+    def __init__(self, rag: RAG):
+        self._rag = rag
 
-    async def run(self):
+    def run(self):
         """Run an interactive chat session"""
 
         print("\n\nType your queries or 'quit' to exit.")
         
         while True:
             try:
-                query = input("\nQuestion: ").strip()
+                question = input("\nQuestion: ").strip()
 
-                if query.lower() == "quit":
+                if question.lower() == "quit":
                     break
 
-                response = await self._llm.invoke(query)
-                print("\nAnswer:" + response)
+                response = self._rag.execute(question)
+                print("\nAnswer: " + response)
             except Exception as e:
                 print(f"\nError: {str(e)}")
 
