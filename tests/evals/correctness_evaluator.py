@@ -16,7 +16,7 @@ SYSTEM_MESSAGE = (
     - Correctness value of True: Means the generated answer meets all the criterias.
     - Correctness value of False: Means not all the criterias are met.
 
-    Include a step-by-step explanation of how you reached to the evaluation correctness value.
+    Include a concise, step-be-step explanation of how you reached to the evaluation correctness value.
     """
 )
 HUMAN_MESSAGE = (
