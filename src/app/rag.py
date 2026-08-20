@@ -10,7 +10,7 @@ SYSTEM_MESSAGE = (
     If you don't know the answer to the question, admit that you don't know.
 
     Context:
-    ```{context}```
+    {context}
     """
 )
 HUMAN_MESSAGE = (
@@ -47,11 +47,3 @@ class RAG():
         response = self._llm.invoke(messages)
 
         return response.content
-
-
-            
-        
-
-
-
-
