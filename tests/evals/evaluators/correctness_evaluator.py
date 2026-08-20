@@ -1,6 +1,7 @@
-from pydantic import BaseModel, Field
 from langchain_anthropic import ChatAnthropic
 from langchain_core.prompts import ChatPromptTemplate
+
+from tests.evals.evaluators.evaluation_result import CorrectnessResult
 
 SYSTEM_MESSAGE = (
     "system",
@@ -32,14 +33,6 @@ HUMAN_MESSAGE = (
     {generated_answer}
     """
 )
-
-class CorrectnessResult(BaseModel):
-    correct: bool = Field(
-        description="True if the answer is correct, False otherwise."
-    )
-    explanation: str = Field(
-        description="reasoning behind the correctness decision."
-    )
 
 class CorrectnessEvaluator:
 
