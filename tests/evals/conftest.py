@@ -13,8 +13,8 @@ from src.app.vectorstore import (
 from src.app.rag import RAG
 
 from tests.utils import load_data
-from tests.data.documents import test_document
-from tests.evals.correctness_evaluator import CorrectnessEvaluator
+from tests.evals.evaluators.correctness_evaluator import CorrectnessEvaluator
+from tests.evals.evaluators.relevance_evaluator import RelevanceEvaluator
 
 @pytest.fixture(scope="session")
 def settings():
@@ -39,3 +39,7 @@ def rag(settings, llm):
 @pytest.fixture
 def correctness_evaluator(llm):
     return CorrectnessEvaluator(llm)
+
+@pytest.fixture
+def relevance_evaluator(llm):
+    return RelevanceEvaluator(llm)
