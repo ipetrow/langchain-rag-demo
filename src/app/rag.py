@@ -46,14 +46,4 @@ class RAG():
 
         response = self._llm.invoke(messages)
 
-        print(response) # TODO Remove
-
         return response.content
-
-
-            
-        
-
-
-
-

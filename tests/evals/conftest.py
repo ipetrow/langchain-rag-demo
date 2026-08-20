@@ -14,10 +14,7 @@ from src.app.rag import RAG
 
 from tests.utils import load_data
 from tests.data.documents import test_document
-from tests.evals.correctness_evaluator import (
-    CorrectnessEvaluator,
-    CorrectnessResult
-)
+from tests.evals.correctness_evaluator import CorrectnessEvaluator
 
 @pytest.fixture(scope="session")
 def settings():

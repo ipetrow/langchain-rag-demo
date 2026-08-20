@@ -1,14 +1,14 @@
 [
     {
-        "question": "",
-        "reference_answer": ""
+        "question": "Did I start *The Great Hunt* right after the first *The Wheel of Time* book?",
+        "reference_answer": "No, two years had passed since you finished the first book before you returned to the series"
     },
     {
-        "question": "",
-        "reference_answer": ""
+        "question": "Was I struggling to progress with the *The Wheel of Time, The Eye of the World* because of unengaging story?",
+        "reference_answer": "No, you were progressing slowly but steadily exactly because of the engaging story."
     },
     {
-        "question": "",
-        "reference_answer": ""
+        "question": "Was I struggling with the beginning of *The Wheel of Time, The Great Hunt*?",
+        "reference_answer": "Yes, you were having issues recalling details about the world and the characters because of the long pause between the two books."
     }
 ]
