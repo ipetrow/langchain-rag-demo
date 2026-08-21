@@ -1,7 +1,6 @@
 from pathlib import Path
 
 from tests.utils import load_data
-from tests.data.documents import test_document
 from tests.evals.evaluators.relevance_evaluator import (
     RelevanceEvaluator,
     RelevanceResult

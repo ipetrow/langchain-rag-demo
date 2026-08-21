@@ -28,6 +28,7 @@ def test_answers_correctness(rag, correctness_evaluator):
         print(f"Generated answer: {generated_answer}")
         print(f"Correct: {evaluation_result_item.correct}")
         print(f"Reasoning: {evaluation_result_item.explanation}\n")
+        print("-" * 50)
 
     for evaluation_result_item in evaluation_results:
         question_item = evaluation_result_item[0]

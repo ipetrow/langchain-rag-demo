@@ -25,12 +25,17 @@ def llm(settings):
     return create_llm(settings=settings)
 
 @pytest.fixture
-def rag(settings, llm):
-    documents = csv_to_documents(settings.data_path)
-    
+def vector_store(settings):
     embeddings = create_embeddings(settings)
-    vector_store = create_vector_store(embeddings)
-    retriever = create_retriever(vector_store)
+    return create_vector_store(embeddings)
+
+@pytest.fixture
+def retriever(vector_store):
+    return create_retriever(vector_store)
+
+@pytest.fixture
+def rag(settings, vector_store, retriever, llm):
+    documents = csv_to_documents(settings.data_path)
     
     vector_store.add_documents(documents=documents)
     
