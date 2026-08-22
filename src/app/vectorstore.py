@@ -10,9 +10,5 @@ def create_vector_store(embeddings: OpenAIEmbeddings):
 
 def create_retriever(vector_store):
     return vector_store.as_retriever(
-        search_kwargs={"k": 2}
+        search_kwargs={"k": 3}
     )
-
-# TODO: Remove
-def retrieve_documents(retriever, query: str) -> list[Document]:
-    return retriever.invoke(query)
