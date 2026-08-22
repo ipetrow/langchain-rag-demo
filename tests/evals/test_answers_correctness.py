@@ -7,7 +7,7 @@ def test_answers_correctness(rag, correctness_evaluator):
 
     evaluation_results: list[(str, CorrectnessResult)] = []
 
-    test_data = load_data(Path("tests/data/evals_correctness_relevance_dataset.json"))
+    test_data = load_data(Path("tests/data/evals_dataset.json"))
 
     for question_item in test_data:
         question = question_item["question"]
@@ -23,7 +23,7 @@ def test_answers_correctness(rag, correctness_evaluator):
 
         evaluation_results.append((question, evaluation_result_item))
 
-        print(f"Question: {question}")
+        print(f"\nQuestion: {question}")
         print(f"Reference answer: {reference_answer}")
         print(f"Generated answer: {generated_answer}")
         print(f"Correct: {evaluation_result_item.correct}")

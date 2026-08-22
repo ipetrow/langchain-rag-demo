@@ -24,21 +24,23 @@ def settings():
 def llm(settings):
     return create_llm(settings=settings)
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def vector_store(settings):
     embeddings = create_embeddings(settings)
     return create_vector_store(embeddings)
 
-@pytest.fixture
-def retriever(vector_store):
-    return create_retriever(vector_store)
+@pytest.fixture(scope="session")
+def populated_vector_store(settings, vector_store):
+    documents = csv_to_documents(settings.data_path)    
+    vector_store.add_documents(documents=documents)
+    return vector_store
 
 @pytest.fixture
-def rag(settings, vector_store, retriever, llm):
-    documents = csv_to_documents(settings.data_path)
-    
-    vector_store.add_documents(documents=documents)
-    
+def retriever(populated_vector_store):
+    return create_retriever(populated_vector_store)
+
+@pytest.fixture
+def rag(retriever, llm):
     return RAG(retriever=retriever, llm=llm)
 
 @pytest.fixture

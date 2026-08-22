@@ -10,7 +10,7 @@ def test_answers_relevance(rag, relevance_evaluator: RelevanceEvaluator):
 
     evaluation_results: list[(str, RelevanceResult)] = []
 
-    test_data = load_data(Path("tests/data/evals_correctness_relevance_dataset.json"))
+    test_data = load_data(Path("tests/data/evals_dataset.json"))
 
     for question_item in test_data:
         question = question_item["question"]
@@ -27,7 +27,8 @@ def test_answers_relevance(rag, relevance_evaluator: RelevanceEvaluator):
         print(f"\nQuestion: {question}")
         print(f"Answer: {answer}")
         print(f"Relevant: {evaluation_result_item.relevant}")
-        print(f"Reasoning: {evaluation_result_item.explanation}")
+        print(f"Reasoning: {evaluation_result_item.explanation}\n")
+        print("-" * 50)
 
     for evaluation_result_item in evaluation_results:
         question_item = evaluation_result_item[0]
